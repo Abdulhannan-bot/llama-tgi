@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 80rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        /* overflow: hidden;
+        text-overflow: clip; */
+      }
+    </style>
+  </head>
+  <body>
+    <form style="margin: auto auto" method="post" action="{% url 'home' %}">
+      {% csrf_token %}
+      <div>
+        <textarea name="prompt" rows="2" id="prompt"></textarea>
+      </div>
+      <div>
+        <button type="submit" id="send-btn">Send</button>
+      </div>
+      <div style="width: 80rem">
+        <p id="container"></p>
+      </div>
+    </form>
+
+    <!-- <script>
+      const url = "http://127.0.0.1:8000/chatbot";
+      const prompt = document.getElementById("prompt");
+      const sendBtn = document.getElementById("send-btn");
+
+      const generate = async () => {
+        const container = document.getElementById("container");
+
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            user_message:
+              " To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office To be or not to be that is the question wehter tis nobler in the mind to suffer the slings and arrows of outrageous fortune or to take arms against a sea of troubles and by opposing end them to die....to sleep no more and by a sleep to say we end the heartache and the thousand natural shocks that flesh is heir to. It's a consumation devoutly to be wished to die to sleep ...to sleep perchance to dream aye there's the rub for who bear the whips and scorns of time the oppressor's wrong the proud man's contumely the laws delay the insolnce of office ",
+            stream: true,
+          }),
+        });
+        // console.log(response);
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder("utf-8");
+
+        // console.log(reader);
+
+        while (true) {
+          const chunk = await reader.read();
+          const { done, value } = chunk;
+          if (done) {
+            break;
+          }
+          const decodedChunk = decoder.decode(value);
+          // const splitChunk = decodedChunk
+          //   .replace("data: ", "")
+          //   .replace("\n", " ");
+          // console.log(splitChunk);
+          // container.innerHTML += splitChunk;
+          const lines = JSON.parse(decodedChunk)?.data;
+
+          // console.log(lines);
+          let linesArr = lines.split(" ");
+          // console.log(linesArr);
+          for (const line of linesArr) {
+            container.innerHTML += line + " ";
+            console.log(line);
+          }
+        }
+      };
+
+      sendBtn.addEventListener("click", () => {
+        generate();
+      });
+    </script> -->
+  </body>
+</html>
