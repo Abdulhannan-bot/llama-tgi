@@ -7,6 +7,12 @@ import torch
 tokenizer = AutoTokenizer.from_pretrained("AbdulHannanMujawar/llama-fine-tuned")
 model = AutoModelForCausalLM.from_pretrained("AbdulHannanMujawar/llama-fine-tuned")
 
+def generate(prompt):
+    input_ids = tokenizer.encode(prompt, return_tensors="pt").to(DEVICE)
+    output = model.generate(input_ids, max_length=100, num_return_sequences=1)
+    generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+    return generated_text
+
 def summarize(model, text: str):
     inputs = tokenizer(text, return_tensors="pt").to(DEVICE)
     inputs_length = len(inputs["input_ids"][0])
