@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .llm_loader import generate
+from .llm_loader import summarize
 # Create your views here.
 
 def home(request):
   msg = ""
   if request.method == "POST":
     print(request.POST)
-    msg = generate(request.POST.get("prompt"))
+    msg = summarize(request.POST.get("prompt"))
 
-  return render(request, "home.html", context={'msg':msg})
+  return render(request, "home.html", context={'msg':msg.strip().split("\n")[0]})
