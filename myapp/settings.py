@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+from starter import create_model_and_tokenizer
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -149,6 +150,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 DEVICE = os.getenv("DEVICE")
+
+model, tokenizer = create_model_and_tokenizer()
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
