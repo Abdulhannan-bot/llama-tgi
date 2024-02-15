@@ -1,7 +1,7 @@
 from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from myapp.settings import DEVICE, model, tokenizer
-Import torch
+
 from peft import LoraConfig, PeftModel
 import torch
 
@@ -12,7 +12,7 @@ NEW_MODEL_NAME="AbdulHannanMujawar/experiments"
 #tokenizer = AutoTokenizer.from_pretrained("AbdulHannanMujawar/llama-fine-tuned")
 #model = AutoModelForCausalLM.from_pretrained("AbdulHannanMujawar/llama-fine-tuned")
 
-model = PeftModel.from_pretrained(MODEL_NAME, NEW_MODEL_NAME)
+model = PeftModel.from_pretrained(model, NEW_MODEL_NAME)
 
 
 # def create_model_and_tokenizer():
