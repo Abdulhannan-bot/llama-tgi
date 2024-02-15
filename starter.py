@@ -1,5 +1,8 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+import torch
 MODEL_NAME="meta-llama/Llama-2-7b-hf"
+from peft import LoraConfig, PeftModel
+
 # NEW_MODEL_NAME="AbdulHannanMujawar/experiments"
 
 def create_model_and_tokenizer():
