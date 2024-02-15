@@ -14,6 +14,7 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 from starter import create_model_and_tokenizer
+from peft import LoraConfig, PeftModel
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -151,7 +152,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 HF_TOKEN = os.getenv("HF_TOKEN")
 DEVICE = os.getenv("DEVICE")
 
+NEW_MODEL_NAME="AbdulHannanMujawar/experiments"
 model, tokenizer = create_model_and_tokenizer()
+model = PeftModel.from_pretrained(model, NEW_MODEL_NAME)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
